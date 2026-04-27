@@ -195,6 +195,7 @@
     { id: "fitting", key: "fitting" },
     { id: "about", key: "about" },
     { id: "brands", key: "about" },
+    { id: "service-area", key: "about" },
     { id: "cta", key: "contact" },
     { id: "contact", key: "contact" }
   ];

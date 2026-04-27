@@ -651,45 +651,72 @@ h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
   50% { transform: translateY(-3px) scale(1.03); }
 }
 .brands { background: var(--white); }
-.brands__line {
-  text-align: center;
-  font-family: "Playfair Display", serif;
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-  color: var(--green-deep);
-  line-height: 1.5;
-  max-width: 52rem;
-  margin: 0 auto 2rem;
-  padding: 0 0.5rem;
-}
 .brands__logos {
   list-style: none;
-  margin: 0 0 2.5rem;
+  margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 1.75rem 2rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem 1.25rem;
   align-items: center;
   justify-items: center;
-  max-width: 960px;
-  margin-inline: auto;
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
 }
 .brands__logos li {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 3.5rem;
+  width: 100%;
+  min-height: 4.5rem;
+  padding: 0.5rem 0.35rem;
+  box-sizing: border-box;
   cursor: default;
 }
 .brands__logos img {
   max-width: 100%;
-  max-height: 3.25rem;
+  max-height: 2.75rem;
   width: auto;
   height: auto;
   object-fit: contain;
   object-position: center;
   display: block;
   transition: transform 0.4s ease, filter 0.4s ease;
-  transform-origin: center bottom;
+  transform-origin: center center;
+}
+.brands__cell--wide img {
+  max-height: 2.35rem;
+  max-width: min(100%, 11rem);
+}
+.brands__cell--compact img {
+  max-height: 1.85rem;
+  max-width: min(100%, 7.5rem);
+}
+.service-area {
+  background: var(--off-white);
+  padding: clamp(2.25rem, 5vw, 3.25rem) 0;
+  border-top: 1px solid var(--border);
+}
+.service-area__inner {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+.service-area__title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+}
+.service-area__text {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--text-dark);
 }
 @media (prefers-reduced-motion: no-preference) {
   .brands__logos li {
@@ -718,34 +745,6 @@ h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
     transform: scale(1.05);
   }
 }
-.brands__places {
-  text-align: center;
-  max-width: 40rem;
-  margin: 0 auto;
-  padding-top: 0.5rem;
-  border-top: 1px solid var(--border);
-}
-.brands__places-title {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin: 0 0 0.75rem;
-}
-.brands__places-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  text-align: center;
-  font-size: 0.95rem;
-  color: var(--text-dark);
-  line-height: 1.6;
-}
-.brands__places-list li { display: inline; }
-.brands__places-list li:not(:last-child)::after { content: " · "; color: var(--text-muted); }
-
 /* ============================================
    12. CTA
    ============================================ */
@@ -897,7 +896,12 @@ h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
   .about__credentials { width: 100%; margin: 0; transform: none; }
   .contact__grid { grid-template-columns: 1fr; }
   .footer__grid { grid-template-columns: 1fr; text-align: center; }
-  .brands__logos { grid-template-columns: repeat(2, 1fr); gap: 1.25rem 1rem; }
+  .brands__logos { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.1rem 0.9rem; }
+  .brands__logos li { min-height: 4rem; }
+}
+
+@media (max-width: 380px) {
+  .brands__logos { grid-template-columns: 1fr; }
 }
 
 /* Fine-tune body font size */
