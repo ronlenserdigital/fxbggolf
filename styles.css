@@ -647,9 +647,19 @@ h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
    11. Brands
    ============================================ */
 .brands { background: var(--white); }
+.brands__line {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  color: var(--green-deep);
+  line-height: 1.5;
+  max-width: 52rem;
+  margin: 0 auto 2rem;
+  padding: 0 0.5rem;
+}
 .brands__logos {
   list-style: none;
-  margin: 0;
+  margin: 0 0 2.5rem;
   padding: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -662,12 +672,39 @@ h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
 .brands__logos li { display: flex; align-items: center; justify-content: center; min-height: 3.5rem; }
 .brands__logos img {
   max-width: 100%;
-  max-height: 2.75rem;
+  max-height: 3.25rem;
   width: auto;
   height: auto;
   object-fit: contain;
   object-position: center;
 }
+.brands__places {
+  text-align: center;
+  max-width: 40rem;
+  margin: 0 auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+.brands__places-title {
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 0 0 0.75rem;
+}
+.brands__places-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  font-size: 0.95rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+.brands__places-list li { display: inline; }
+.brands__places-list li:not(:last-child)::after { content: " · "; color: var(--text-muted); }
 
 /* ============================================
    12. CTA
