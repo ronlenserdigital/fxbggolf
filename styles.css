@@ -15,7 +15,6 @@
   --border:       rgba(26, 74, 46, 0.12);
   --shadow:       0 4px 24px rgba(26, 74, 46, 0.10);
   --nav-h:        5rem;
-  --reveal-dur:   0.6s;
 }
 
 /* ============================================
@@ -89,35 +88,7 @@ h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
   display: block;
 }
 
-/*
- * Reveal animations — only when body.reveals-ready is set by script.js after init.
- * Default is VISIBLE so the page is never blank if JS fails to load or throws
- * (e.g. GitHub Pages path issues, ad blockers, or errors before IntersectionObserver runs).
- */
-.reveal, .reveal-stagger > * {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity var(--reveal-dur) ease, transform var(--reveal-dur) ease;
-  transition-delay: var(--reveal-delay, 0s);
-}
-body.reveals-ready .reveal:not(.visible),
-body.reveals-ready .reveal-stagger > *:not(.visible) {
-  opacity: 0;
-  transform: translateY(32px);
-}
-body.reveals-ready .reveal.visible,
-body.reveals-ready .reveal-stagger > *.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-@media (prefers-reduced-motion: reduce) {
-  body.reveals-ready .reveal,
-  body.reveals-ready .reveal-stagger > * {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none;
-  }
-}
+/* Section content is always visible — scroll-reveal was removed (it used opacity:0 until JS, which caused blank pages when JS was blocked or failed). */
 
 /* Buttons */
 .btn-primary {
@@ -247,6 +218,7 @@ body.reveals-ready .reveal-stagger > *.visible {
   text-transform: uppercase;
   position: relative;
   padding: 0.25rem 0;
+  color: inherit; /* over hero: white from .nav; .scrolled overrides below */
 }
 .nav-link::after, .nav-overlay__link::after {
   content: "";

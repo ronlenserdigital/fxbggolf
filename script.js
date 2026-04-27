@@ -1,37 +1,10 @@
 /**
  * Fredericksburg Golf Center — site interactions
- * Navbar scroll, mobile menu, smooth scroll, reveal, form, active nav
+ * Navbar scroll, mobile menu, smooth scroll, form, active nav
  */
 
 (function () {
   "use strict";
-
-  function revealFailsafe() {
-    document.querySelectorAll(".reveal:not(.visible), .reveal-stagger > *:not(.visible)").forEach(function (el) {
-      el.classList.add("visible");
-    });
-  }
-
-  /** Mark elements already in the viewport (same tick as reveals-ready) to avoid a flash of hidden content. */
-  function markRevealInView() {
-    var vh = window.innerHeight;
-    [].forEach.call(document.querySelectorAll(".reveal"), function (el) {
-      var r = el.getBoundingClientRect();
-      if (r.top < vh * 0.95 && r.bottom > 0) {
-        el.classList.add("visible");
-      }
-    });
-    [].forEach.call(document.querySelectorAll(".reveal-stagger"), function (parent) {
-      var r = parent.getBoundingClientRect();
-      if (r.top < vh * 0.95 && r.bottom > 0) {
-        [].forEach.call(parent.children, function (child, i) {
-          window.setTimeout(function () {
-            child.classList.add("visible");
-          }, i * 80);
-        });
-      }
-    });
-  }
 
   var nav = document.querySelector(".nav");
   var header = document.querySelector(".site-header");
@@ -140,58 +113,7 @@
     }
   });
 
-  /* 4 & 5) IntersectionObserver: .reveal; .reveal-stagger children 80ms — with safe defaults if JS fails */
-  try {
-    if ("IntersectionObserver" in window) {
-      var obsOpts = { threshold: 0, rootMargin: "0px 0px 8% 0px" };
-      document.body.classList.add("reveals-ready");
-      markRevealInView();
-
-      var revealElements = document.querySelectorAll(".reveal");
-      for (var r = 0; r < revealElements.length; r++) {
-        (function (el) {
-          var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (en) {
-              if (en.isIntersecting) {
-                en.target.classList.add("visible");
-                io.unobserve(en.target);
-              }
-            });
-          }, obsOpts);
-          io.observe(el);
-        })(revealElements[r]);
-      }
-
-      var staggerParents = document.querySelectorAll(".reveal-stagger");
-      for (var s = 0; s < staggerParents.length; s++) {
-        (function (parent) {
-          var children = [].slice.call(parent.children);
-          var io = new IntersectionObserver(function (entries) {
-            entries.forEach(function (en) {
-              if (!en.isIntersecting) return;
-              children.forEach(function (child, i) {
-                window.setTimeout(function () {
-                  child.classList.add("visible");
-                }, i * 80);
-              });
-              io.unobserve(en.target);
-            });
-          }, obsOpts);
-          io.observe(parent);
-        })(staggerParents[s]);
-      }
-
-      /* If something still never intersects, never leave content invisible */
-      window.setTimeout(revealFailsafe, 3000);
-    } else {
-      document.querySelectorAll(".reveal, .reveal-stagger > *").forEach(function (el) {
-        el.classList.add("visible");
-      });
-    }
-  } catch (revealErr) {
-    document.body.classList.remove("reveals-ready");
-    revealFailsafe();
-  }
+  /* 4–5) Scroll-reveal removed — always-visible content (see styles.css). */
 
   /* 6) Web3Forms */
   var form = document.getElementById("contact-form");
