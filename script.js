@@ -1,5 +1,5 @@
 /**
- * Fredericksburg Golf Center — site interactions
+ * Fredericksburg Golf Center: site interactions
  * Navbar scroll, mobile menu, smooth scroll, form, active nav
  */
 
@@ -113,7 +113,7 @@
     }
   });
 
-  /* 4–5) Scroll-reveal removed — always-visible content (see styles.css). */
+  /* Scroll-reveal removed: content stays visible (see styles.css). */
 
   /* 6) Web3Forms */
   var form = document.getElementById("contact-form");
@@ -138,7 +138,7 @@
       var accessKey = keyInput && keyInput.value;
       if (!accessKey || accessKey === "YOUR_WEB3FORMS_KEY") {
         if (formError) {
-          formError.textContent = "Form is not configured yet. Add your Web3Forms access key, or call us at (540) 372-7888.";
+          formError.textContent = "Form is not configured. Add your Web3Forms key or call (540) 372-7888.";
           formError.hidden = false;
         }
         return;
@@ -157,7 +157,7 @@
         phone: (document.getElementById("phone") || {}).value,
         service: (document.getElementById("service") || {}).value,
         message: (document.getElementById("message") || {}).value,
-        subject: "Website inquiry – Fredericksburg Golf Center",
+        subject: "Website inquiry: Fredericksburg Golf Center",
         from_name: (document.getElementById("name") || {}).value
       };
 
