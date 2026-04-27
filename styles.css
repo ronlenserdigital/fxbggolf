@@ -693,31 +693,6 @@ h3 { font-size: 1.35rem; margin-bottom: 0.5rem; }
   max-height: 1.85rem;
   max-width: min(100%, 7.5rem);
 }
-.service-area {
-  background: var(--off-white);
-  padding: clamp(2.25rem, 5vw, 3.25rem) 0;
-  border-top: 1px solid var(--border);
-}
-.service-area__inner {
-  text-align: center;
-  max-width: 40rem;
-  margin: 0 auto;
-}
-.service-area__title {
-  font-family: "Barlow Condensed", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin: 0 0 0.75rem;
-}
-.service-area__text {
-  margin: 0;
-  font-size: 1.05rem;
-  line-height: 1.65;
-  color: var(--text-dark);
-}
 @media (prefers-reduced-motion: no-preference) {
   .brands__logos li {
     animation: brand-drift 4.2s ease-in-out infinite;
